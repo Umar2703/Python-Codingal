@@ -1,0 +1,5 @@
+print("Welcome to the world of coding")
+print(2343433)
+print("Hello coding",685858587586867676767676766767,"hello again")
+print("hello python\n","Getafe")
+print("Welcome to ",end="anything")

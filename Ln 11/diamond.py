@@ -15,7 +15,7 @@ for i in range(1,halfdiamrow+1):
             print(end=str(num))
             num= num+1
     print()
-    space=1
+space=1
 for i in range(1,halfdiamrow):
     for j in range(1,space+1): 
         print(end=" ")

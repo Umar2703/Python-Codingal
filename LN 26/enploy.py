@@ -1,0 +1,13 @@
+class employee:
+    def __ini__(self):
+        print("object  created")
+    def __del__(self):
+        print("destructor called")
+def create_object():
+    print('making object')
+    obj =employee
+    print("function rnd")
+    return obj
+print("calling create_obj( function)")
+obj= create_object()
+print("program end")

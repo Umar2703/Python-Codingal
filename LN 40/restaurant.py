@@ -46,7 +46,7 @@ class RestaurauntOrderManagement:
         )
         currency_dropdown=ttk.Combobox(
             frame,
-            textvariable=self.currency_var
+            textvariable=self.currency_var,
             state="readonly",
             width=18,
             values=("USD","INR")
@@ -62,9 +62,30 @@ class RestaurauntOrderManagement:
         order_button=ttk.Button(
             frame,
             text="Place Order",
-            command=self.place_
+            command=self.place_order
         )
         order_button.grid(
-            row=len(elf.menu_items)+2
+            row=len(self.menu_items)+2,
             columnspan=3,
+            padx=10,
+            pady=10
         )
+    def setup_background(self,root):
+        bg_width, bg_height=800, 606
+        canvas=tk.Canvas(root,width=bg_width,height=bg_height)
+        canvas.pack()
+        original_img=tk.PhotoImage(file="LN 40\\img.jpg")
+        bg_img=original_img.subsample(
+            original_img.width()// bg_width,
+            original_img.height()// bg_height
+        )
+        canvas.create_image(0,0, anchor=tk.NW,image=bg_img)
+        canvas.image=bg_img
+    def update_menu_prices(self,*args):
+        currency=self.currency_var.get()
+        symbol="rs"if currency=="INR" else "$"
+        rate=self.exchange_rate if currency=="INR" else 1
+        for item,label in self.menu_labels.items():
+            price=self.menu_items[item]* rate
+            label.config(text=f"{item}({symbol}{price}):")
+            
